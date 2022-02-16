@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Казбек Епхиев](https://up.htmlacademy.ru/javascript/25/user/186928).
-* Наставник: `Неизвестно`.
+* Наставник: [Магомед Кандаев](https://htmlacademy.ru/profile/magomedkandaev).
 
 ---
 
