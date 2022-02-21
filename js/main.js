@@ -2,25 +2,20 @@ function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   if (min < 0 || max < 0) {
-    return Error;
+    throw new Error('Ошибка ввода данных. Введите положительные числа.');
   }
-  if(min === max) {return min;}
   if(min > max) {
-    const temp = min;
-    min = max;
-    max = temp;
+    [min, max] = [max, min]; //Разобрался сам, ознакомившись с деструктуризацией, в точности совпало с твоим решением, спасибо за совет ))
   }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function isRelevantLength(currentStroke, maxLength) {
-  if (maxLength < 1 || !(typeof currentStroke === 'string')) {
-    return Error;
+  if (maxLength < 1 || typeof currentStroke !== 'string') {
+    throw new Error('Ошибка ввода данных. Введите строку.');
   }
-  let isRelevant;
-  isRelevant = currentStroke.length > maxLength ? isRelevant = false : isRelevant = true;
-  return isRelevant;
+  return currentStroke.length <= maxLength;
 }
 
-getRandomInt(1, 108);
-isRelevantLength('12345678', 8);
+console.log(getRandomInt(0, 9));
+console.log(isRelevantLength('12345678', 8));
