@@ -17,5 +17,5 @@ function isRelevantLength(currentStroke, maxLength) {
   return currentStroke.length <= maxLength;
 }
 
-console.log(getRandomInt(0, 9));
-console.log(isRelevantLength('12345678', 8));
+getRandomInt(0, 9);
+isRelevantLength('12345678', 8);
