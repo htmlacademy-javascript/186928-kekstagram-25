@@ -26,7 +26,6 @@ const LIKES_MAX = 200;
 const AVATAR_MIN = 1;
 const AVATAR_MAX = 6;
 
-
 const messages = [
   'Всё отлично! В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -62,4 +61,4 @@ const createPhotoDescription = function(index) {
 
 const photos = Array.from({length: OBJECTS_NUMBER}, (_, index) => createPhotoDescription(index + 1));
 
-photos.forEach( (e) => {console.log(e)} ); // заглушка, чтобы линтер не возмущался
+photos.forEach( () => {} ); // заглушка, чтобы линтер не возмущался
