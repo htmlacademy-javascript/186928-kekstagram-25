@@ -21,6 +21,11 @@ isRelevantLength(' ', 1); // заглушка, чтобы линтер не во
 
 const OBJECTS_NUMBER = 25;
 const COMMENTS_MAX_NUMBER = 10;
+const LIKES_MIN = 15;
+const LIKES_MAX = 200;
+const AVATAR_MIN = 1;
+const AVATAR_MAX = 6;
+
 
 const messages = [
   'Всё отлично! В целом всё неплохо. Но не всё.',
@@ -32,28 +37,29 @@ const messages = [
 
 const names = ['Луселия Сантус', 'Сузана Виейра', 'Маркус Палмейра', 'Каролина Дикманн', 'Вивиан Пазмантер', 'Мурилу Бенисиу', 'Джованна Антонелли'];
 
-const getRandomElement = (arr) => arr[getRandomInt(0, arr.length - 1)];
+const getRandomElement = (elements) => elements[getRandomInt(0, elements.length - 1)];
 
 const createComment = function(index){
   return {
     id: index,
-    avatar: `img/avatar-${getRandomInt(1, 6)}.svg`,
+    avatar: `img/avatar-${getRandomInt(AVATAR_MIN, AVATAR_MAX)}.svg`,
     message: getRandomElement(messages),
     name: getRandomElement(names),
   };
 };
-const usersComments = Array.from( { length: getRandomInt(0, COMMENTS_MAX_NUMBER) }, (_, index) => createComment(index + 1));
+
+const usersComments = () => Array.from( { length: getRandomInt(0, COMMENTS_MAX_NUMBER) }, (_, index) => createComment(index + 1));
 
 const createPhotoDescription = function(index) {
   return {
     id: index,
     url: `photos/${index}.jpg`,
     description: 'Эта фотография заряжена положительной энергией. Если смотреть на нее 59 сек трижды в день, то Ваша жизнь измениться. Но это не точно.',
-    likes: getRandomInt(15, 200),
-    comments: usersComments,
+    likes: getRandomInt(LIKES_MIN, LIKES_MAX),
+    comments: usersComments(),
   };
 };
 
 const photos = Array.from({length: OBJECTS_NUMBER}, (_, index) => createPhotoDescription(index + 1));
 
-photos.forEach( () => {} ); // заглушка, чтобы линтер не возмущался
+photos.forEach( (e) => {console.log(e)} ); // заглушка, чтобы линтер не возмущался
