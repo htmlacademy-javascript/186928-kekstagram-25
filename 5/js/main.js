@@ -1,0 +1,2 @@
+import './avatar-render.js';
+
