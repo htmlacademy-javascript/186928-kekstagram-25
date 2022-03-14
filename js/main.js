@@ -1,3 +1,2 @@
-import {photos} from './create-photos.js';
+import './avatar-render.js';
 
-photos.forEach( () => {} ); // заглушка, чтобы линтер не возмущался
