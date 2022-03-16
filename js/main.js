@@ -1,3 +1,7 @@
-import {photos} from './create-photos.js';
+import {getPhotos} from './temp-data.js';
+import {createPictures} from './pictures.js';
 
-photos.forEach( () => {} ); // заглушка, чтобы линтер не возмущался
+const photos = getPhotos();
+createPictures(photos);
+
+
