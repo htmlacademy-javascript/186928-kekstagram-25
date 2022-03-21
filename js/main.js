@@ -1,7 +1,10 @@
-import {getPhotos} from './temp-data.js';
+import {photos} from './data.js';
 import {createPictures} from './pictures.js';
+import './big-picture.js';
+import {openPicture, closePicture} from './gallery.js';
 
-const photos = getPhotos();
 createPictures(photos);
 
+openPicture();
+closePicture();
 

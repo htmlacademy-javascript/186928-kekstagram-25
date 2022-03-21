@@ -1,3 +1,5 @@
+import {COMMENTS_IMG_HEIGHT, COMMENTS_IMG_WIDTH } from './data.js';
+
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -18,5 +20,39 @@ const isRelevantLength = (currentStroke, maxLength) => {
 };
 
 const getRandomElement = (elements) => elements[getRandomInt(0, elements.length - 1)];
+const commentsList = document.querySelector('.social__comments');
+const commentsFragment = document.createDocumentFragment();
 
-export {getRandomInt, isRelevantLength, getRandomElement};
+const clearCommentsList = () => {
+  commentsList.innerHTML = '';
+};
+
+const createCommentItems = (comments) => {
+  clearCommentsList();
+  comments.forEach( ({avatar, name, message}) => {
+    const commentItem = document.createElement('li');
+    const commentItemImg = document.createElement('img');
+    const commentItemText = document.createElement('p');
+
+    commentItem.classList.add('social__comment');
+
+    commentItemImg.classList.add('social__picture');
+    commentItemImg.src = avatar;
+    commentItemImg.alt = name;
+    commentItemImg.width = COMMENTS_IMG_WIDTH;
+    commentItemImg.height = COMMENTS_IMG_HEIGHT;
+
+    commentItemText.classList.add('social__text');
+    commentItemText.textContent = message;
+
+    commentItem.appendChild(commentItemImg);
+    commentItem.appendChild(commentItemText);
+
+    commentsFragment.appendChild(commentItem);
+  });
+  commentsList.append(commentsFragment);
+};
+
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export {getRandomInt, isRelevantLength, getRandomElement, createCommentItems, isEscapeKey, clearCommentsList};
