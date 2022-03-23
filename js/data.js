@@ -1,9 +1,13 @@
+import {getPhotos} from './temp-data.js';
+
 const OBJECTS_NUMBER = 25;
 const COMMENTS_MAX_NUMBER = 10;
 const LIKES_MIN = 15;
 const LIKES_MAX = 200;
 const AVATAR_MIN = 1;
 const AVATAR_MAX = 6;
+const COMMENTS_IMG_WIDTH = 35;
+const COMMENTS_IMG_HEIGHT = 35;
 
 const messages = [
   'Всё отлично! В целом всё неплохо. Но не всё.',
@@ -15,4 +19,6 @@ const messages = [
 
 const names = ['Луселия Сантус', 'Сузана Виейра', 'Маркус Палмейра', 'Каролина Дикманн', 'Вивиан Пазмантер', 'Мурилу Бенисиу', 'Джованна Антонелли'];
 
-export { names, messages, OBJECTS_NUMBER, COMMENTS_MAX_NUMBER, LIKES_MIN, LIKES_MAX, AVATAR_MIN, AVATAR_MAX };
+const photos = getPhotos();
+
+export { names, messages, OBJECTS_NUMBER, COMMENTS_MAX_NUMBER, LIKES_MIN, LIKES_MAX, AVATAR_MIN, AVATAR_MAX, COMMENTS_IMG_WIDTH, COMMENTS_IMG_HEIGHT, photos};
