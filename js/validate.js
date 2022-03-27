@@ -18,12 +18,6 @@ const validateForm = (form) => {
   const hashtagErrorMessage = 'Неверно заполнено поле';
   const textDescriptionErrorMessage = `Не более ${TEXT_DESCRIPTION_MAX_LENGTH} символов`;
 
-/*   hashtag.addEventListener('focus', () => {
-    document.addEventListener('keydown', (evt) => {
-      evt.stopPropagation();
-    });
-  }); */
-
   function isContainDuplicates(values) {
     return (new Set(values)).size !== values.length;
   }
