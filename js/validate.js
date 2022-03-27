@@ -1,4 +1,5 @@
 import { TEXT_DESCRIPTION_MAX_LENGTH, HASHTAGS_MAX_NUMBER } from './data.js';
+import { onPreviewImgEscKeydown } from './img-uploader.js';
 
 const validateForm = (form) => {
   const re = /^#[A-Za-zА-Яа-яёЁ0-9]{1,20}$/;
@@ -36,6 +37,22 @@ const validateForm = (form) => {
 
   pristine.addValidator(hashtag, isValidHashtag, hashtagErrorMessage);
   pristine.addValidator(textDescription, isValidtextDescription, textDescriptionErrorMessage);
+
+  hashtag.addEventListener('focus', () => {
+    document.removeEventListener('keydown', onPreviewImgEscKeydown);
+  });
+
+  textDescription.addEventListener('focus', () => {
+    document.removeEventListener('keydown', onPreviewImgEscKeydown);
+  });
+
+  hashtag.addEventListener('blur', () => {
+    document.addEventListener('keydown', onPreviewImgEscKeydown);
+  });
+
+  textDescription.addEventListener('blur', () => {
+    document.addEventListener('keydown', onPreviewImgEscKeydown);
+  });
 
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();

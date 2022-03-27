@@ -42,5 +42,5 @@ const createImgUploaderListeners = () => {
   });
 };
 
-export {createImgUploaderListeners};
+export {createImgUploaderListeners, onPreviewImgEscKeydown};
 
