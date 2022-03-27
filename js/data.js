@@ -8,6 +8,8 @@ const AVATAR_MIN = 1;
 const AVATAR_MAX = 6;
 const COMMENTS_IMG_WIDTH = 35;
 const COMMENTS_IMG_HEIGHT = 35;
+const TEXT_DESCRIPTION_MAX_LENGTH = 140;
+const HASHTAGS_MAX_NUMBER = 5;
 
 const messages = [
   'Всё отлично! В целом всё неплохо. Но не всё.',
@@ -21,4 +23,4 @@ const names = ['Луселия Сантус', 'Сузана Виейра', 'Ма
 
 const photos = getPhotos();
 
-export { names, messages, OBJECTS_NUMBER, COMMENTS_MAX_NUMBER, LIKES_MIN, LIKES_MAX, AVATAR_MIN, AVATAR_MAX, COMMENTS_IMG_WIDTH, COMMENTS_IMG_HEIGHT, photos};
+export { names, messages, OBJECTS_NUMBER, COMMENTS_MAX_NUMBER, LIKES_MIN, LIKES_MAX, AVATAR_MIN, AVATAR_MAX, COMMENTS_IMG_WIDTH, COMMENTS_IMG_HEIGHT, photos,TEXT_DESCRIPTION_MAX_LENGTH, HASHTAGS_MAX_NUMBER};

@@ -33,9 +33,11 @@ function closeBigPicture() {
 
 const createPictureListeners = () => {
   pictures.addEventListener('click', (evt) => {
-    const target = evt.target.closest('.picture');
-    createBigPicture(target);
-    openBigPicture();
+    if(!evt.target.closest('.img-upload')) {
+      const target = evt.target.closest('.picture');
+      createBigPicture(target);
+      openBigPicture();
+    }
   });
 
   closeBtn.addEventListener('click', () => {
