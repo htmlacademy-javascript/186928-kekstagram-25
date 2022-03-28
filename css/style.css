@@ -302,6 +302,16 @@ main {
   border: none;
 }
 
+.img-upload__text {
+  position: relative;
+}
+
+.img-upload__text-error {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
 .img-upload__start {
   position: relative;
 
@@ -364,6 +374,14 @@ main {
 
 .img-upload__input:focus + .img-upload__label {
   outline: auto 5px highlight;
+}
+
+.img-upload__form--invalid .text__hashtags {
+  outline: auto 5px rgb(252, 2, 2);
+}
+
+.text__description:invalid {
+  outline: auto 5px rgb(252, 2, 2);
 }
 
 
