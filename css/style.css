@@ -376,11 +376,11 @@ main {
   outline: auto 5px highlight;
 }
 
-.img-upload__form--invalid .text__hashtags {
+.img-upload__form--invalid .text__hashtags:focus {
   outline: auto 5px rgb(252, 2, 2);
 }
 
-.text__description:invalid {
+.img-upload__form--invalid .text__description:focus {
   outline: auto 5px rgb(252, 2, 2);
 }
 

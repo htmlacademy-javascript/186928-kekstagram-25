@@ -1,16 +1,11 @@
-import {createBigPicture} from './big-picture.js';
-import {isEscapeKey} from './util.js';
+import { createBigPicture } from './big-picture.js';
+import { isEscapeKey } from './util.js';
 
 const pictures = document.querySelector('.pictures');
 const bigPicture = document.querySelector('.big-picture');
 const closeBtn = bigPicture.querySelector('.big-picture__cancel');
 
 const body = document.querySelector('body');
-
-const commentsCount = document.querySelector('.social__comment-count');
-const commentsLoader = document.querySelector('.comments-loader');
-commentsCount.classList.add('hidden');
-commentsLoader.classList.add('hidden');
 
 const onPictureEscKeydown = (evt) => {
   if(isEscapeKey(evt)){

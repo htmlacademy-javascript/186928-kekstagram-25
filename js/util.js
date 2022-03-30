@@ -28,7 +28,9 @@ const clearCommentsList = () => {
 };
 
 const createCommentItems = (comments) => {
-  clearCommentsList();
+  if(!comments.length) {
+    return null;
+  }
   comments.forEach( ({avatar, name, message}) => {
     const commentItem = document.createElement('li');
     const commentItemImg = document.createElement('img');
