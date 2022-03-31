@@ -1,5 +1,6 @@
 import { TEXT_DESCRIPTION_MAX_LENGTH, HASHTAGS_MAX_NUMBER } from './data.js';
 import { onPreviewImgEscKeydown } from './img-uploader.js';
+import { isRelevantLength } from './util.js';
 
 const validateForm = (form) => {
   const re = /^#[A-Za-zА-Яа-яёЁ0-9]{1,20}$/;
@@ -31,12 +32,12 @@ const validateForm = (form) => {
     return hashtags.every( (element) => re.test(element) ) && hashtags.length <= HASHTAGS_MAX_NUMBER && !isContainDuplicates(hashtags);
   }
 
-  function isValidtextDescription(value) {
-    return value.length < TEXT_DESCRIPTION_MAX_LENGTH;
+  function isValidTextDescription(value) {
+    return isRelevantLength(value, TEXT_DESCRIPTION_MAX_LENGTH);
   }
 
   pristine.addValidator(hashtag, isValidHashtag, hashtagErrorMessage);
-  pristine.addValidator(textDescription, isValidtextDescription, textDescriptionErrorMessage);
+  pristine.addValidator(textDescription, isValidTextDescription, textDescriptionErrorMessage);
 
   hashtag.addEventListener('focus', () => {
     document.removeEventListener('keydown', onPreviewImgEscKeydown);
