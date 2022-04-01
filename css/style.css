@@ -696,6 +696,10 @@ main {
   border-radius: 5px;
 }
 
+.img-upload__form--invalid .text__hashtags {
+  outline: auto 8px rgb(199, 8, 8);
+}
+
 .text__description {
   width: 450px;
   height: 100px;

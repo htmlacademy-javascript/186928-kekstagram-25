@@ -1,4 +1,5 @@
 import { isEscapeKey } from './util.js';
+import { createScaleControlListeners } from './scale-listeners.js';
 
 const body = document.querySelector('body');
 const imgUploadForm = document.querySelector('.img-upload__form');
@@ -22,6 +23,7 @@ function openPreviewImg() {
   imgEditor.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onPreviewImgEscKeydown);
+  createScaleControlListeners();
 }
 
 function closePreviewImg() {
@@ -32,15 +34,17 @@ function closePreviewImg() {
 }
 
 const createImgUploaderListeners = () => {
-  imgUploader.addEventListener('change', () => {
-    imgPreview.src = URL.createObjectURL(imgUploader.files[0]);
+
+  imgUploader.addEventListener('change', (evt) => {
+    imgPreview.src = URL.createObjectURL(evt.target.files[0]);
     openPreviewImg();
   });
 
   uploadCancelBtn.addEventListener('click', () => {
     closePreviewImg();
   });
+
 };
 
-export {createImgUploaderListeners, onPreviewImgEscKeydown};
+export {createImgUploaderListeners, onPreviewImgEscKeydown, imgPreview};
 
