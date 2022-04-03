@@ -1,5 +1,6 @@
 import { isEscapeKey } from './util.js';
 import { createScaleControlListeners } from './scale-listeners.js';
+import { setFilters } from './upload-img-effects.js';
 
 const body = document.querySelector('body');
 const imgUploadForm = document.querySelector('.img-upload__form');
@@ -24,6 +25,7 @@ function openPreviewImg() {
   body.classList.add('modal-open');
   document.addEventListener('keydown', onPreviewImgEscKeydown);
   createScaleControlListeners();
+  setFilters();
 }
 
 function closePreviewImg() {

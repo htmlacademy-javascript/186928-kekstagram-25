@@ -3,7 +3,6 @@ import { createPictures } from './pictures.js';
 import  { createPictureListeners } from './gallery.js';
 import { createImgUploaderListeners } from './img-uploader.js';
 import { validateForm } from './validate.js';
-import './upload-img-effects.js';
 
 createPictures(photos);
 createPictureListeners();
