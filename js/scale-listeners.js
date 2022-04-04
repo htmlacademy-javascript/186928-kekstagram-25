@@ -1,4 +1,4 @@
-import { SCALE_STEP, PHOTO_ZOOM_MAX_VALUE, PHOTO_ZOOM_MIN_VALUE } from './data.js';
+import { SCALE_STEP, PHOTO_ZOOM_MAX_VALUE, PHOTO_ZOOM_MIN_VALUE, SCALE_START_VALUE } from './data.js';
 import { imgPreview } from './img-uploader.js';
 
 const PROCENT_SYMBOL = '%';
@@ -35,4 +35,9 @@ const createScaleControlListeners = () => {
   });
 };
 
-export { createScaleControlListeners };
+const resetScaleValue = () => {
+  scaleControl.value = SCALE_START_VALUE;
+  imgPreview.style.transform = `scale(${(parseInt(scaleControl.value, 10))/100})`;
+};
+
+export { createScaleControlListeners, resetScaleValue };

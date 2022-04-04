@@ -1,6 +1,6 @@
 import { isEscapeKey } from './util.js';
-import { createScaleControlListeners } from './scale-listeners.js';
-import { setFilters } from './upload-img-effects.js';
+import { createScaleControlListeners, resetScaleValue } from './scale-listeners.js';
+import { setFilters, resetUploadImgValues } from './upload-img-effects.js';
 
 const body = document.querySelector('body');
 const imgUploadForm = document.querySelector('.img-upload__form');
@@ -12,6 +12,12 @@ const imgPreview = imgPreviewContainer.querySelector('img');
 const imgUploader = document.querySelector('.img-upload__input');
 
 const uploadCancelBtn = document.querySelector('.img-upload__cancel');
+
+const resetUploadImgAll = () => {
+  imgUploadForm.reset();
+  resetUploadImgValues();
+  resetScaleValue();
+};
 
 const onPreviewImgEscKeydown = (evt) => {
   if(isEscapeKey(evt)) {
@@ -31,7 +37,7 @@ function openPreviewImg() {
 function closePreviewImg() {
   imgEditor.classList.add('hidden');
   body.classList.remove('modal-open');
-  imgUploadForm.reset();
+  resetUploadImgAll();
   document.removeEventListener('keydown', onPreviewImgEscKeydown);
 }
 

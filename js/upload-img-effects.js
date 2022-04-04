@@ -1,7 +1,9 @@
 const imgPreviewContainer = document.querySelector('.img-upload__preview');
 const imgPreview = imgPreviewContainer.querySelector('img');
 const slider = document.querySelector('.effect-level__slider');
+const sliderContainer = document.querySelector('.img-upload__effect-level');
 const effectsValue = document.querySelector('.effect-level__value');
+const originalFilter = document.querySelector('#effect-none');
 
 //функция создания объектов настройки для обновления noUiSlider
 function createEffectOptions(min, max, step) {
@@ -52,7 +54,7 @@ noUiSlider.create(slider, {
   connect: 'lower',
 });
 
-slider.classList.add('hidden');
+sliderContainer.classList.add('hidden');
 
 // функция для установки значения свойства filter загруженной картинки picture.style.filter
 const setImgFilterValue = (picture, filter) => {
@@ -77,11 +79,11 @@ const addEffectToImg = (filter) => {
 
 const updateSlider = (currentSlider, filter) => {
   if( !effectsOptions[filter] ) {
-    slider.classList.add('hidden');
+    sliderContainer.classList.add('hidden');
     return null;
   }
-  if(slider.classList.contains('hidden')) {
-    slider.classList.remove('hidden');
+  if( sliderContainer.classList.contains('hidden') ) {
+    sliderContainer.classList.remove('hidden');
   }
   const currentOption = effectsOptions[filter];
   currentSlider.noUiSlider.updateOptions(currentOption);
@@ -110,4 +112,9 @@ const setFilters = () => {
   });
 };
 
-export { setFilters };
+const resetUploadImgValues = () => {
+  updateSlider(slider, 'none');
+  originalFilter.checked = true;
+};
+
+export { setFilters, resetUploadImgValues };
