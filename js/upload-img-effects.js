@@ -73,6 +73,9 @@ const setImgFilterValue = (picture, filter) => {
 };
 
 const addEffectToImg = (filter) => {
+  if(filter === 'none') {
+    imgPreview.className = '';
+  }
   imgPreview.className = '';
   imgPreview.classList.add(`effects__preview--${filter}`);
 };
@@ -80,6 +83,7 @@ const addEffectToImg = (filter) => {
 const updateSlider = (currentSlider, filter) => {
   if( !effectsOptions[filter] ) {
     sliderContainer.classList.add('hidden');
+    setImgFilterValue(imgPreview, filter);
     return null;
   }
   if( sliderContainer.classList.contains('hidden') ) {
@@ -113,7 +117,8 @@ const setFilters = () => {
 };
 
 const resetUploadImgValues = () => {
-  updateSlider(slider, 'none');
+  updateSlider(slider, originalFilter.value);
+  addEffectToImg(originalFilter.value);
   originalFilter.checked = true;
 };
 
