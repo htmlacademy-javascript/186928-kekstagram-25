@@ -11,3 +11,4 @@ createImgUploaderListeners();
 
 const imgUploadForm = document.querySelector('.img-upload__form');
 validateForm(imgUploadForm);
+
