@@ -1,4 +1,7 @@
-import {COMMENTS_IMG_HEIGHT, COMMENTS_IMG_WIDTH } from './data.js';
+import { COMMENTS_IMG_HEIGHT, COMMENTS_IMG_WIDTH,ALERT_SHOW_TIME, submitButton } from './data.js';
+import { closePreviewImg } from './img-uploader.js';
+
+const tempContent = document.querySelector('#success').content.querySelector('.success');
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
@@ -57,4 +60,80 @@ const createCommentItems = (comments) => {
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomInt, isRelevantLength, getRandomElement, createCommentItems, isEscapeKey, clearCommentsList};
+const getErrorDialogBox = (err) => {
+  const dialogBox = document.createElement('div');
+  dialogBox.style.zIndex = 100;
+  dialogBox.style.width = '300px';
+  dialogBox.style.height = '200px';
+  dialogBox.style.position = 'absolute';
+  dialogBox.style.left = 0;
+  dialogBox.style.right = 0;
+  dialogBox.style.top = 0;
+  dialogBox.style.bottom = 0;
+  dialogBox.style.margin = 'auto';
+  dialogBox.style.transform = 'translate(-50%, -50%);';
+  dialogBox.style.padding = '10px 3px';
+  dialogBox.style.fontSize = '30px';
+  dialogBox.style.lineHeight = '2';
+  dialogBox.style.borderRadius = '12px';
+  dialogBox.style.textAlign = 'center';
+  dialogBox.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+  dialogBox.style.color = 'red';
+  dialogBox.textContent = err;
+
+  document.body.append(dialogBox);
+
+  setTimeout(() => {
+    dialogBox.remove();
+  }, ALERT_SHOW_TIME);
+};
+
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Сохраняю...';
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Сохранить';
+};
+
+const onSuccessMessageEscKeydown = (evt) => {
+  if(isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeSuccessMessage();
+  }
+};
+
+const onFreePlaceClick = (evt) => {
+  if(evt.target.matches('.success')) {
+    closeSuccessMessage();
+  }
+};
+
+const showSuccessMessage = () => {
+  tempContent.style.display = 'flex';
+  const closeSuccessMessageButton = tempContent.querySelector('.success__button');
+  document.body.insertAdjacentElement('beforeend', tempContent);
+
+  closeSuccessMessageButton.addEventListener('click', () => {
+    closeSuccessMessage();
+  });
+
+  document.addEventListener('click', onFreePlaceClick);
+  document.addEventListener('keydown', onSuccessMessageEscKeydown);
+};
+
+function closeSuccessMessage() {
+  tempContent.style.display = 'none';
+  document.removeEventListener('keydown', onSuccessMessageEscKeydown);
+  document.removeEventListener('click', onFreePlaceClick);
+}
+
+const onSuccessSend = () => {
+  closePreviewImg();
+  unblockSubmitButton();
+  showSuccessMessage();
+};
+
+export { getRandomInt, isRelevantLength, getRandomElement, createCommentItems, isEscapeKey, clearCommentsList, getErrorDialogBox, onSuccessSend, unblockSubmitButton, blockSubmitButton };

@@ -1,5 +1,7 @@
-// создаем новые DOM - элементы на основе шаблона "#picture" и временных данных
+let serverPhotos = [];
+
 const createPictures = (photos) => {
+  serverPhotos = photos;
   const tempContent = document.querySelector('#picture').content.querySelector('.picture');
   const avatarsFragment = document.createDocumentFragment();
 
@@ -18,5 +20,5 @@ const createPictures = (photos) => {
   picturesBlock.appendChild(avatarsFragment);
 };
 
-export {createPictures};
+export {createPictures, serverPhotos};
 
