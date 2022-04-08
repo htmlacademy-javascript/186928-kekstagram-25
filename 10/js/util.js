@@ -1,7 +1,8 @@
-import { COMMENTS_IMG_HEIGHT, COMMENTS_IMG_WIDTH,ALERT_SHOW_TIME, submitButton } from './data.js';
+import { COMMENTS_IMG_HEIGHT, COMMENTS_IMG_WIDTH,ALERT_SHOW_TIME } from './data.js';
 import { closePreviewImg } from './img-uploader.js';
 
 const tempContent = document.querySelector('#success').content.querySelector('.success');
+const submitButton = document.querySelector('.img-upload__submit');
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
