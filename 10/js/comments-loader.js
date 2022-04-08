@@ -38,6 +38,9 @@ const loadComments = (currentComments) => {
   if(isAnyComments()) {
     commentsLoader.classList.add('hidden');
   }
+  else {
+    commentsLoader.classList.remove('hidden');
+  }
 
   //обработчик события 'click' для загрузки следующих комментариев
   commentsLoader.addEventListener('click', () => {
