@@ -15,8 +15,7 @@ const PHOTO_ZOOM_MIN_VALUE = 25;
 const SCALE_START_VALUE = 100;
 const ALERT_SHOW_TIME = 3000;
 const dataSrc = 'https://25.javascript.pages.academy/kekstagram/data';
-const sendDataSrc = 'https://25.javascript.pages.acadmy/kekstagram';
-const submitButton = document.querySelector('.img-upload__submit');
+const sendDataSrc = 'https://25.javascript.pages.academy/kekstagram';
 
 const messages = [
   'Всё отлично! В целом всё неплохо. Но не всё.',
@@ -28,4 +27,4 @@ const messages = [
 
 const names = ['Луселия Сантус', 'Сузана Виейра', 'Маркус Палмейра', 'Каролина Дикманн', 'Вивиан Пазмантер', 'Мурилу Бенисиу', 'Джованна Антонелли'];
 
-export { names, messages, OBJECTS_NUMBER, COMMENTS_MAX_NUMBER, LIKES_MIN, LIKES_MAX, AVATAR_MIN, AVATAR_MAX, COMMENTS_IMG_WIDTH, COMMENTS_IMG_HEIGHT, TEXT_DESCRIPTION_MAX_LENGTH, HASHTAGS_MAX_NUMBER, COMMENTS_UPLOAD_NUMBER, SCALE_STEP, PHOTO_ZOOM_MAX_VALUE, PHOTO_ZOOM_MIN_VALUE, SCALE_START_VALUE, ALERT_SHOW_TIME, dataSrc, sendDataSrc, submitButton };
+export { names, messages, OBJECTS_NUMBER, COMMENTS_MAX_NUMBER, LIKES_MIN, LIKES_MAX, AVATAR_MIN, AVATAR_MAX, COMMENTS_IMG_WIDTH, COMMENTS_IMG_HEIGHT, TEXT_DESCRIPTION_MAX_LENGTH, HASHTAGS_MAX_NUMBER, COMMENTS_UPLOAD_NUMBER, SCALE_STEP, PHOTO_ZOOM_MAX_VALUE, PHOTO_ZOOM_MIN_VALUE, SCALE_START_VALUE, ALERT_SHOW_TIME, dataSrc, sendDataSrc };
