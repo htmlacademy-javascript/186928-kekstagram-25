@@ -55,5 +55,5 @@ const createImgUploaderListeners = () => {
 
 };
 
-export {createImgUploaderListeners, onPreviewImgEscKeydown, imgPreview};
+export {createImgUploaderListeners, onPreviewImgEscKeydown, imgPreview, closePreviewImg};
 
