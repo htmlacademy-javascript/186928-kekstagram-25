@@ -6,7 +6,12 @@ const sendData = (src, formData, onSuccessSend, onError) => {
       body: formData,
     },
   )
-    .then(() => onSuccessSend())
+    .then((response) => {
+      if(!response.ok) {
+        throw new Error ('Ошибка соединения с сервером');
+      }
+      onSuccessSend();
+    })
     .catch((err) => onError(err));
 };
 

@@ -1,6 +1,6 @@
 import { TEXT_DESCRIPTION_MAX_LENGTH, HASHTAGS_MAX_NUMBER } from './data.js';
 import { onPreviewImgEscKeydown } from './img-uploader.js';
-import { isRelevantLength, getErrorDialogBox, onSuccessSend, blockSubmitButton } from './util.js';
+import { isRelevantLength, onSendError, onSuccessSend, blockSubmitButton } from './util.js';
 import { sendData } from './data-to-server.js';
 import { sendDataSrc } from './data.js';
 
@@ -62,7 +62,7 @@ const validateForm = (form) => {
     if(pristine.validate()) {
       blockSubmitButton();
       const formData = new FormData(evt.target);
-      sendData (sendDataSrc, formData, onSuccessSend, getErrorDialogBox);
+      sendData (sendDataSrc, formData, onSuccessSend, onSendError);
     }
   });
 };

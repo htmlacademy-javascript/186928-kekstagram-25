@@ -89,6 +89,7 @@ const getErrorDialogBox = (err) => {
   }, ALERT_SHOW_TIME);
 };
 
+
 const blockSubmitButton = () => {
   submitButton.disabled = true;
   submitButton.textContent = 'Сохраняю...';
@@ -137,4 +138,10 @@ const onSuccessSend = () => {
   showSuccessMessage();
 };
 
-export { getRandomInt, isRelevantLength, getRandomElement, createCommentItems, isEscapeKey, clearCommentsList, getErrorDialogBox, onSuccessSend, unblockSubmitButton, blockSubmitButton };
+const onSendError = (err) => {
+  getErrorDialogBox(err);
+  unblockSubmitButton();
+  closePreviewImg();
+};
+
+export { getRandomInt, isRelevantLength, getRandomElement, createCommentItems, isEscapeKey, clearCommentsList, getErrorDialogBox, onSuccessSend, unblockSubmitButton, blockSubmitButton, onSendError };
