@@ -4,7 +4,7 @@ const loadPictures = (src, onSuccess, onError) =>
       if(response.ok) {
         return response.json();
       }
-      throw new Error (`${response.status} ${response.statusText}`);
+      throw new Error ('Ошибка получения данных.');
     })
     .then( (pictures) => onSuccess(pictures) )
     .catch( (err) => onError(err) );
