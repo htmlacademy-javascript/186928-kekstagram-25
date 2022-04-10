@@ -1,4 +1,4 @@
-import { getNUniquePhotos, originalPhotos, debounce } from './util.js';
+import { getNUniquePhotos, getOriginalPhotos, debounce } from './util.js';
 import { RANDOM_PHOTOS_NUMBER, RERENDER_DELAY } from './data.js';
 
 const filtersBlock = document.querySelector('.img-filters');
@@ -12,19 +12,18 @@ const getFilter = (cb) => {
     filtersButtons.forEach((elem) => elem.classList.remove('img-filters__button--active'));
 
     if(evt.target.closest('#filter-default')){
-      filteredPhotos = originalPhotos.slice();
+      filteredPhotos = getOriginalPhotos().slice();
       evt.target.classList.add('img-filters__button--active');
     }
 
     if(evt.target.closest('#filter-random')){
-
-      const randomPhotos = getNUniquePhotos(RANDOM_PHOTOS_NUMBER, originalPhotos.slice());
+      const randomPhotos = getNUniquePhotos(RANDOM_PHOTOS_NUMBER, getOriginalPhotos().slice());
       filteredPhotos = randomPhotos;
       evt.target.classList.add('img-filters__button--active');
     }
 
     if(evt.target.closest('#filter-discussed')){
-      filteredPhotos = originalPhotos.slice().sort((a, b)=> b.comments.length - a.comments.length);
+      filteredPhotos = getOriginalPhotos().slice().sort((a, b)=> b.comments.length - a.comments.length);
       evt.target.classList.add('img-filters__button--active');
     }
 

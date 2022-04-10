@@ -164,6 +164,9 @@ function setOriginalPhotos (photos){
   originalPhotos = photos.slice();
 }
 
+const getOriginalPhotos = () => originalPhotos;
+
+
 const debounce = (callback, timeoutDelay) => {
   let timeoutId;
   return (...rest) => {
@@ -173,4 +176,4 @@ const debounce = (callback, timeoutDelay) => {
 };
 
 
-export { getRandomInt, isRelevantLength, getRandomElement, createCommentItems, isEscapeKey, clearCommentsList, getErrorDialogBox, onSuccessSend, unblockSubmitButton, blockSubmitButton, onSendError, getNUniquePhotos, setOriginalPhotos, originalPhotos, debounce };
+export { getRandomInt, isRelevantLength, getRandomElement, createCommentItems, isEscapeKey, clearCommentsList, getErrorDialogBox, onSuccessSend, unblockSubmitButton, blockSubmitButton, onSendError, getNUniquePhotos, setOriginalPhotos, getOriginalPhotos, debounce };
