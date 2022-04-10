@@ -1,14 +1,21 @@
 import { loadPictures } from './data-from-server.js';
-import { getErrorDialogBox } from './util.js';
+import { getErrorDialogBox, setOriginalPhotos } from './util.js';
 import { dataSrc } from './data.js';
 import { createPictures } from './pictures.js';
-
 import { createPictureListeners } from './gallery.js';
 import { createImgUploaderListeners } from './img-uploader.js';
 import { validateForm } from './validate.js';
+import { getFilter } from './filters.js';
 
-
-loadPictures(dataSrc, createPictures, getErrorDialogBox);
+loadPictures(
+  dataSrc,
+  (pictures) => {
+    createPictures(pictures);
+    setOriginalPhotos(pictures);
+    getFilter(createPictures);
+  },
+  getErrorDialogBox
+);
 
 createPictureListeners();
 createImgUploaderListeners();

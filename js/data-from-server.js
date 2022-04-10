@@ -6,7 +6,11 @@ const loadPictures = (src, onSuccess, onError) =>
       }
       throw new Error ('Ошибка получения данных.');
     })
-    .then( (pictures) => onSuccess(pictures) )
-    .catch( (err) => onError(err) );
+    .then( (pictures) => {
+      onSuccess(pictures);
+    })
+    .catch( (err) => {
+      onError(err);
+    });
 
 export { loadPictures };

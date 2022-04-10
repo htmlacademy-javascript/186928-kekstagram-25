@@ -1,5 +1,5 @@
-import { serverPhotos } from './pictures.js';
 import { loadComments } from './comments-loader.js';
+import { getOriginalPhotos } from './util.js';
 
 const createBigPicture = (target) => {
 
@@ -18,12 +18,12 @@ const createBigPicture = (target) => {
 
   //по атрибуту dataset ноды "a" находим соответствующий объект в массиве photos
   const targetID = target.dataset.id;
-  const currentComments = serverPhotos[targetID].comments;
+  const currentComments = getOriginalPhotos()[targetID].comments;
 
   loadComments(currentComments); //загружаем комментарии
 
   const description = bigPicture.querySelector('.social__caption');
-  description.textContent = serverPhotos[targetID].description;
+  description.textContent = getOriginalPhotos()[targetID].description;
 };
 
 export { createBigPicture };

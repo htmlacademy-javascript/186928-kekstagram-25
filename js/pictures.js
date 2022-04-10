@@ -1,11 +1,15 @@
-let serverPhotos = [];
 
 const createPictures = (photos) => {
-  serverPhotos = photos;
+  const picturesBlock = document.querySelector('.pictures');
+  if(picturesBlock.querySelectorAll('.picture__img')) {
+    const pictures = picturesBlock.querySelectorAll('.picture');
+    pictures.forEach((elem)=>{
+      picturesBlock.removeChild(elem);
+    });
+  }
   const tempContent = document.querySelector('#picture').content.querySelector('.picture');
   const avatarsFragment = document.createDocumentFragment();
-
-  photos.forEach( ({url, likes, comments, id}) => {
+  photos.slice().forEach( ({url, likes, comments, id}) => {
     const avatar = tempContent.cloneNode(true);
     avatar.querySelector('.picture__img').src = url;
     avatar.querySelector('.picture__likes').textContent = likes;
@@ -16,9 +20,8 @@ const createPictures = (photos) => {
   });
 
   //отрисовка аватаров в блоке .pictures
-  const picturesBlock = document.querySelector('.pictures');
   picturesBlock.appendChild(avatarsFragment);
 };
 
-export {createPictures, serverPhotos};
+export {createPictures};
 
