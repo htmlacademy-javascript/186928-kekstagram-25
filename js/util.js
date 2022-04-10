@@ -1,4 +1,4 @@
-import { COMMENTS_IMG_HEIGHT, COMMENTS_IMG_WIDTH,ALERT_SHOW_TIME } from './data.js';
+import { COMMENTS_IMG_HEIGHT, COMMENTS_IMG_WIDTH, ALERT_SHOW_TIME } from './data.js';
 import { closePreviewImg } from './img-uploader.js';
 
 const tempContent = document.querySelector('#success').content.querySelector('.success');
@@ -14,6 +14,20 @@ const getRandomInt = (min, max) => {
     [min, max] = [max, min]; //Разобрался сам, ознакомившись с деструктуризацией, в точности совпало с твоим решением, спасибо за совет ))
   }
   return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const getNUniquePhotos = (numberOfUniquePhotos, photos) => {
+  if(numberOfUniquePhotos > photos.length) {
+    numberOfUniquePhotos = photos.length;
+  }
+  const uniquePhotos = [];
+  while (uniquePhotos.length < numberOfUniquePhotos) {
+    const randomValue = getRandomInt(0, photos.length - 1);
+    if (!(uniquePhotos.includes(photos[randomValue]))) {
+      uniquePhotos.push(photos[randomValue]);
+    }
+  }
+  return uniquePhotos;
 };
 
 const isRelevantLength = (currentStroke, maxLength) => {
@@ -144,4 +158,19 @@ const onSendError = (err) => {
   closePreviewImg();
 };
 
-export { getRandomInt, isRelevantLength, getRandomElement, createCommentItems, isEscapeKey, clearCommentsList, getErrorDialogBox, onSuccessSend, unblockSubmitButton, blockSubmitButton, onSendError };
+let originalPhotos = null;
+
+function setOriginalPhotos (photos){
+  originalPhotos = photos.slice();
+}
+
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+
+export { getRandomInt, isRelevantLength, getRandomElement, createCommentItems, isEscapeKey, clearCommentsList, getErrorDialogBox, onSuccessSend, unblockSubmitButton, blockSubmitButton, onSendError, getNUniquePhotos, setOriginalPhotos, originalPhotos, debounce };
