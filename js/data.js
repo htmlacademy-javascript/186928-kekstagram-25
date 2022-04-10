@@ -15,7 +15,7 @@ const PHOTO_ZOOM_MIN_VALUE = 25;
 const SCALE_START_VALUE = 100;
 const ALERT_SHOW_TIME = 3000;
 const RANDOM_PHOTOS_NUMBER = 10;
-const RERENDER_DELAY = 500;
+const RERENDER_DELAY = 2500;
 
 const dataSrc = 'https://25.javascript.pages.academy/kekstagram/data';
 const sendDataSrc = 'https://25.javascript.pages.academy/kekstagram';
