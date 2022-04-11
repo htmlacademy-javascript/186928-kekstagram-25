@@ -5,7 +5,7 @@ const filtersBlock = document.querySelector('.img-filters');
 const filtersButtons = filtersBlock.querySelectorAll('.img-filters__button');
 
 const getFilter = (cb) => {
-  const delay = debounce(cb, RERENDER_DELAY);
+  const getDelay = debounce(cb, RERENDER_DELAY);
   filtersBlock.classList.remove('img-filters--inactive');
 
   filtersBlock.addEventListener('click', (evt) => {
@@ -28,7 +28,7 @@ const getFilter = (cb) => {
       evt.target.classList.add('img-filters__button--active');
     }
 
-    delay(filteredPhotos);
+    getDelay(filteredPhotos);
   });
 };
 
