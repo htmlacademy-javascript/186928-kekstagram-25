@@ -1,7 +1,8 @@
 import { COMMENTS_IMG_HEIGHT, COMMENTS_IMG_WIDTH, ALERT_SHOW_TIME } from './data.js';
 import { closePreviewImg } from './img-uploader.js';
 
-const tempContent = document.querySelector('#success').content.querySelector('.success');
+const tempContentSuccess = document.querySelector('#success').content.querySelector('.success');
+const tempContentError = document.querySelector('#error').content.querySelector('.error');
 const submitButton = document.querySelector('.img-upload__submit');
 
 const getRandomInt = (min, max) => {
@@ -111,7 +112,7 @@ const blockSubmitButton = () => {
 
 const unblockSubmitButton = () => {
   submitButton.disabled = false;
-  submitButton.textContent = 'Сохранить';
+  submitButton.textContent = 'Опубликовать';
 };
 
 const onSuccessMessageEscKeydown = (evt) => {
@@ -121,29 +122,61 @@ const onSuccessMessageEscKeydown = (evt) => {
   }
 };
 
-const onFreePlaceClick = (evt) => {
+const onErrorMessageEscKeydown = (evt) => {
+  if(isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeErrorMessage();
+  }
+};
+
+const onFreePlaceClickSuccess = (evt) => {
   if(evt.target.matches('.success')) {
     closeSuccessMessage();
   }
 };
 
+const onFreePlaceClickError = (evt) => {
+  if(evt.target.matches('.error')) {
+    closeErrorMessage();
+  }
+};
+
 const showSuccessMessage = () => {
-  tempContent.style.display = 'flex';
-  const closeSuccessMessageButton = tempContent.querySelector('.success__button');
-  document.body.insertAdjacentElement('beforeend', tempContent);
+  tempContentSuccess.style.display = 'flex';
+  const closeSuccessMessageButton = tempContentSuccess.querySelector('.success__button');
+  document.body.insertAdjacentElement('beforeend', tempContentSuccess);
 
   closeSuccessMessageButton.addEventListener('click', () => {
     closeSuccessMessage();
   });
 
-  document.addEventListener('click', onFreePlaceClick);
+  document.addEventListener('click', onFreePlaceClickSuccess);
   document.addEventListener('keydown', onSuccessMessageEscKeydown);
 };
 
+const showErrorMessage = () => {
+  tempContentError.style.display = 'flex';
+  const closeErrorMessageButton = tempContentError.querySelector('.error__button');
+  document.body.insertAdjacentElement('beforeend', tempContentError);
+
+  closeErrorMessageButton.addEventListener('click', () => {
+    closeErrorMessage();
+  });
+
+  document.addEventListener('click', onFreePlaceClickError);
+  document.addEventListener('keydown', onErrorMessageEscKeydown);
+};
+
 function closeSuccessMessage() {
-  tempContent.style.display = 'none';
+  tempContentSuccess.style.display = 'none';
   document.removeEventListener('keydown', onSuccessMessageEscKeydown);
-  document.removeEventListener('click', onFreePlaceClick);
+  document.removeEventListener('click', onFreePlaceClickSuccess);
+}
+
+function closeErrorMessage() {
+  tempContentError.style.display = 'none';
+  document.removeEventListener('keydown', onErrorMessageEscKeydown);
+  document.removeEventListener('click', onFreePlaceClickError);
 }
 
 const onSuccessSend = () => {
@@ -152,10 +185,10 @@ const onSuccessSend = () => {
   showSuccessMessage();
 };
 
-const onSendError = (err) => {
-  getErrorDialogBox(err);
-  unblockSubmitButton();
+const onSendError = () => {
   closePreviewImg();
+  unblockSubmitButton();
+  showErrorMessage();
 };
 
 let originalPhotos = null;
