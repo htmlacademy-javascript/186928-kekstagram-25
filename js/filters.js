@@ -4,7 +4,7 @@ import { RANDOM_PHOTOS_NUMBER, RERENDER_DELAY } from './data.js';
 const filtersBlock = document.querySelector('.img-filters');
 const filtersButtons = filtersBlock.querySelectorAll('.img-filters__button');
 
-const getFilter = (cb) => {
+const getFilter = (cb) => { // функция задержки на промежуток времени RERENDER_DELAY
   const getDelay = debounce(cb, RERENDER_DELAY);
   filtersBlock.classList.remove('img-filters--inactive');
 
