@@ -45,7 +45,7 @@ function closePreviewImg() {
 const createImgUploaderListeners = () => {
 
   imgUploader.addEventListener('change', (evt) => {
-    imgPreview.src = URL.createObjectURL(evt.target.files[0]);
+    imgPreview.src = URL.createObjectURL(evt.target.files[0]); // передаю URL своего изображения при помощи статического метода URL.createObjectURL()
     openPreviewImg();
   });
 
